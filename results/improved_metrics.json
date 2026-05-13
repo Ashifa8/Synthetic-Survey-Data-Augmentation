@@ -1,0 +1,14 @@
+{
+  "dataset": "Seed + CopulaGAN",
+  "note": "Best augmented config — averaged across 4 classifiers (GBM, RF, SVM-RBF, SVM-Linear)",
+  "Accuracy": 0.9219,
+  "Precision": 0.9284,
+  "Recall": 0.9261,
+  "F1": 0.9271,
+  "AUC": 0.9854,
+  "improvement_over_baseline": {
+    "Accuracy": "+0.0900",
+    "F1": "+0.0809",
+    "AUC": "+0.0557"
+  }
+}

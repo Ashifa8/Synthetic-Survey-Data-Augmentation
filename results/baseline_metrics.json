@@ -1,0 +1,9 @@
+{
+  "dataset": "Real (Original)",
+  "note": "Benchmark — averaged across 4 classifiers (GBM, RF, SVM-RBF, SVM-Linear)",
+  "Accuracy": 0.8319,
+  "Precision": 0.8401,
+  "Recall": 0.8527,
+  "F1": 0.8462,
+  "AUC": 0.9297
+}
