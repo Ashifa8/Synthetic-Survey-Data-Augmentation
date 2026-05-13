@@ -1,0 +1,82 @@
+# ============================================================
+# config.yaml — Centralized Hyperparameter & Path Configuration
+# Assignment 02: DGNN Data Augmentation Study
+# ============================================================
+
+# ── Data ────────────────────────────────────────────────────
+data:
+  excel_path: "data/Supplemental Tables.xlsx"
+  original_sheet: "Table S10"
+  seed_sheet: "Table S11"
+  target_column: "country"
+  drop_columns:
+    - "SEQ"
+    - "Unnamed: 0"
+  test_size: 0.20
+  val_size: 0.16      # fraction of (1 - test_size)
+  random_state: 42
+
+# ── Synthesizer Training ────────────────────────────────────
+synthesizers:
+  epochs: 30000
+  random_state: 42
+
+  ctgan:
+    batch_size: 500
+    verbose: true
+
+  tvae:
+    batch_size: 500
+    verbose: false
+
+  copulagan:
+    batch_size: 500
+    verbose: true
+
+# ── Classifiers ─────────────────────────────────────────────
+classifiers:
+  gradient_boosting:
+    random_state: 42
+
+  random_forest:
+    n_estimators: 100
+    random_state: 42
+
+  svm_rbf:
+    kernel: "rbf"
+    probability: true
+
+  svm_linear:
+    kernel: "linear"
+    probability: true
+
+# ── Evaluation ──────────────────────────────────────────────
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1
+    - auc_roc
+  cv_folds: 5              # for Novelty 4 cross-validation
+
+# ── Novelty Extensions ──────────────────────────────────────
+novelty:
+  augmentation_ratios:     # Novelty 1: ratio sweep
+    - 0.5
+    - 1.0
+    - 2.0
+    - 3.0
+    - 5.0
+  ensemble_parts: 3        # Novelty 2: equal split among 3 generators
+
+# ── Paths ───────────────────────────────────────────────────
+paths:
+  checkpoints_dir: "checkpoints/"
+  results_dir: "results/"
+  sample_data: "data/sample_data.csv"
+
+  checkpoint_names:
+    ctgan: "ctgan_30k.pkl"
+    tvae: "tvae_30k.pkl"
+    copulagan: "copulagan_30k.pkl"
